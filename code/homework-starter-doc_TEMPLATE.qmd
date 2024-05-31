@@ -95,11 +95,11 @@ ggpairs(drought_exp_clean, # data frame
 
 Choose 3 pairs of variables to compare. Make notes of those comparisons below.    
 
-**sla and shoot_g is do not seem to be correlated, pearsons r is 0.348**  
+**SLA and shoot mass have a positive relationship (Pearson's r = 0.348).** 
 
-**leaf_dry_weight_g and sla do not seem to be correlated, pearsons r is 0.033**  
+**Leaf weight has a positive relationship with total biomass (Pearson's r = 0.460)**  
 
-**shoot mass and total mass seem to have a strong positive correlation, pearsons r is 0.902**
+**Shoot mass and total mass have a strong positive correlation (Pearson's r = 0.902)**
 
 ## Preliminary visualizations  
 
@@ -123,7 +123,7 @@ ggplot(data = drought_exp_clean, # data frame
               height = 0) # not jittering points up and down
 ```
 
-**Plants w/ larger biomass seem to have larger ranges. Grindelia has highest biomass, Acmispon has the lowest biomass.**
+**Plants with larger biomass seem to have larger ranges. Grindelia has highest biomass; Acmispon has the lowest biomass.**
 
 ### how does total biomass differ between water treatments?
 
@@ -135,7 +135,7 @@ ggplot(data = drought_exp_clean, # data frame
               height = 0) # not jittering points up and down
 ```
 
-**Drought stressed plants are more likely to have a lower biomass compared to well watered plants. (which makes sense based on how plants work.**
+**Drought stressed plants are more likely to have a lower biomass compared to well watered plants. This makes sense based on the plant biology (always check for if results make biological sense).**
 
 ### how does specific leaf area (SLA) influence total biomass?
 
@@ -146,17 +146,17 @@ ggplot(data = drought_exp_clean, # data frame
   geom_point() # scatterplot
 ```
 
-** SLA and biomass in grams are not really correlated (visually). check correlation and see a that it does (stats).**
+**SLA seems to have a positive relationship with total mass: as SLA increases, total mass increases. Going back and checking Pearson's correlation, we confirm this.**
 
 # Model construction
 
 What is the null model?  
 
-0. **total mass is not predicted by the water treatment, sla,and specie.**  
+0. **total biomass is not predicted by the water treatment, SLA,and species**  
 
 What is the saturated model?  
 
-1. **saturated model here**  
+1. **total biomass as a function of SLA, water treatment, and species**  
 
 In class we are going to try two more models:  
 

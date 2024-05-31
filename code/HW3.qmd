@@ -1,0 +1,136 @@
+---
+title: "Homework 3"
+format:
+  html: 
+    toc: true 
+execute: # for all code chunks
+    warning: false # do not display warnings
+    message: false # do not display messages
+    
+links: 
+    - icon: github
+      text: Github
+      href: https://github.com/evelynbermudez/bermudez-evelyn_homework-03.git
+---
+
+Link to repo: https://github.com/evelynbermudez/bermudez-evelyn_homework-03.git
+
+
+# Set up
+
+## reading in packages
+```{r read-pkg}
+# general use
+library(tidyverse)
+library(readxl)
+library(here)
+library(janitor)
+
+# visualizing pairs
+library(GGally)
+
+# model selection
+library(MuMIn)
+
+# model predictions
+library(ggeffects)
+
+# model tables
+library(gtsummary)
+library(flextable)
+library(modelsummary)
+
+drought_exp <- read_xlsx(path = here("data", 
+                                     "Valliere_etal_EcoApps_Data.xlsx"),
+                         sheet = "First Harvest")
+
+# quick look at data 
+str(drought_exp)
+class(drought_exp)
+```
+
+## cleaning
+```{r clean}
+drought_exp_clean <- drought_exp %>% 
+  clean_names() %>% # nicer column names
+  mutate(species_name = case_when( # adding column with species scientific names
+    species == "ENCCAL" ~ "Encelia californica", # bush sunflower
+    species == "ESCCAL" ~ "Eschscholzia californica", # California poppy
+    species == "PENCEN" ~ "Penstemon centranthifolius", # Scarlet bugler
+    species == "GRICAM" ~ "Grindelia camporum", # great valley gumweed
+    species == "SALLEU" ~ "Salvia leucophylla", # Purple sage
+    species == "STIPUL" ~ "Nasella pulchra", # Purple needlegrass
+    species == "LOTSCO" ~ "Acmispon glaber" # deerweed
+  )) %>% 
+  relocate(species_name, .after = species) %>% # moving species_name column after species
+  mutate(water_treatment = case_when( # adding column with full treatment names
+    water == "WW" ~ "Well watered",
+    water == "DS" ~ "Drought stressed"
+  )) %>% 
+  relocate(water_treatment, .after = water) # moving water_treatment column after water
+```
+
+# Model construction
+
+The null model is:
+
+0. **total biomass is not predicted by the water treatment, SLA,and species**  
+```{r null-model}
+model0 <- lm(total_g ~ 1, 
+             data = drought_exp_clean)
+```
+
+The saturated model is: 
+
+1. **total biomass as a function of SLA, water treatment, and species**  
+```{r sat-model}
+model1 <- lm(total_g ~ sla + water_treatment + species_name, 
+             data = drought_exp_clean)
+```
+
+In class we constructed the following models:  
+
+2.  **total biomass as a function of SLA and water treatment**  
+```{r model2}
+model2 <- lm(total_g ~ sla + water_treatment, 
+             data = drought_exp_clean)
+```
+3.  **total biomass as a function of SLA and species**  
+```{r model3}
+model3 <- lm(total_g ~ sla + species_name, 
+             data = drought_exp_clean)
+```
+
+For homework, I will construct one more model:  
+
+4. **total biomass as a function of water treatment and species**  
+```{r model4}
+model4 <- lm(total_g ~ water_treatment + species_name, 
+             data = drought_exp_clean)
+
+par(mfrow = c(2, 2))
+plot(model4)
+```
+**Diagnostics for model4 confirm that the model conforms to the assumptions of linear models. The residuals and square root of the standardized residuals are evenly distributed across the model predictions, indicating homoscedastic residuals. We can also see that we have normality from the QQ plot. **
+
+# Model selection
+
+From the `MuMIn` package
+
+```{r}
+model.sel(model0,
+          model1, 
+          model2, 
+          model3,
+          model4)
+```
+From the MinMu test, we can see that model4 is the best model that predicts total biomass growth as it has the smallest AIC value and its delta = 0. This means that water treatment and species are the best predictors for total biomass growth.
+
+
+
+
+
+
+
+
+
