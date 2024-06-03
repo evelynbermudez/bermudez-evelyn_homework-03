@@ -15,10 +15,10 @@ links:
 
 Link to repo: https://github.com/evelynbermudez/bermudez-evelyn_homework-03.git
 
+# Problem 1
+## Set up
 
-# Set up
-
-## reading in packages
+### reading in packages
 ```{r read-pkg}
 # general use
 library(tidyverse)
@@ -49,7 +49,7 @@ str(drought_exp)
 class(drought_exp)
 ```
 
-## cleaning
+### cleaning
 ```{r clean}
 drought_exp_clean <- drought_exp %>% 
   clean_names() %>% # nicer column names
@@ -70,11 +70,11 @@ drought_exp_clean <- drought_exp %>%
   relocate(water_treatment, .after = water) # moving water_treatment column after water
 ```
 
-# Model construction
+## Model construction
 
 The null model is:
 
-0. **total biomass is not predicted by the water treatment, SLA,and species**  
+0. **total biomass is not predicted by the water treatment, SLA, and species**  
 ```{r null-model}
 model0 <- lm(total_g ~ 1, 
              data = drought_exp_clean)
@@ -111,9 +111,9 @@ model4 <- lm(total_g ~ water_treatment + species_name,
 par(mfrow = c(2, 2))
 plot(model4)
 ```
-**Diagnostics for model4 confirm that the model conforms to the assumptions of linear models. The residuals and square root of the standardized residuals are evenly distributed across the model predictions, indicating homoscedastic residuals. We can also see that we have normality from the QQ plot. **
+**Diagnostics for model4 confirm that the model conforms to the assumptions of linear models. The residuals and square root of the standardized residuals are evenly distributed across the model predictions, indicating homoscedastic residuals. We can also see that we have normality from the QQ plot since the relationship between the theoretical values and standardized residuals is roughly linear. Finally, there seems to be no outliers that significantly influence the model as visualized in the fourth plot.**
 
-# Model selection
+## Model selection
 
 From the `MuMIn` package
 
@@ -124,10 +124,37 @@ model.sel(model0,
           model3,
           model4)
 ```
-From the MinMu test, we can see that model4 is the best model that predicts total biomass growth as it has the smallest AIC value and its delta = 0. This means that water treatment and species are the best predictors for total biomass growth.
+**From the AC test, we can see that model4, which conforms to linear model assumptions, is the best model that predicts total biomass growth as it has the smallest AIC value and its delta = 0. This means that water treatment and species are the best predictors for total biomass growth from the combinations of predictor variables.**      
+
+## Model summary
+
+```{r}
+summary(model4)
+```
+
+**The reference level for water_treatment is Drought stressed. The reference level for species_name is Acmispon Glaber.**  
+
+Interpreting the model estimates:  
+
+- intercept: **Acmispon Glaber total biomass in drought stressed treatment when SLA = 0 **  
+- SLA slope: **Across drought treatment and species, w each 1 unit inc in SLA (mm^2^drymass of leaf), we expect an inc in total mass of -0.00025 which means that w the esti and standard error there is not effect of SLA on total mass.**  
+- well watered estimate: **across species and SLA, well watered plants tend to be 0.012 +- (figure out how to write the +- in code) 0.02g heavier than drought **    
+- Lotus scoparius estimate: **insert response here**    
+- Stipa pulchra estimate: **insert response here**    
+
+## Model predictions
 
 
 
+# Problem 2
+## a. I would like to plot a bar graph with each bar being an individual run, and the y-axis representing the total distance in miles of that run. Each bar will be colored by the time of day the run occurred at with the goal of representing what time of day I prefer to run at given my weekly schedule. The three categories will be Morning (7AM - 11:59AM), Noon/Afternoon (12PM - 4:59PM), and Evening/Night (5PM - 10PM).
+
+## b. Paper Sketch 
+![Alt text](aff_sketch.jpeg)
+
+
+## c. Visualization Draft
+![Alt text](aff_draft.jpeg)
 
 
 

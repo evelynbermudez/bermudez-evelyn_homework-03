@@ -185,9 +185,10 @@ model1 <- lm(total_g ~ sla + water_treatment + species_name,
 
 par(mfrow = c(2, 2))
 plot(model1)
+
 # you might get a warning when you run this code - that is ok!
 ```
-**diagnostics for saturated model look good**
+**Diagnostics for saturated model look good.**
 
 ## 2. total biomass as a function of SLA and water treatment
 
@@ -195,9 +196,10 @@ plot(model1)
 model2 <- lm(total_g ~ sla + water_treatment,
              data = drought_exp_clean)
 
+par(mfrow = c(2, 2))
 plot(model2)
 ```
-**look at diagnostics later**
+**Diagnostics for model2 look good.**
 
 ## 3. total biomass as a function of SLA and species
 
@@ -205,10 +207,10 @@ plot(model2)
 model3 <- lm(total_g ~ sla + species_name,
              data = drought_exp_clean)
 
+par(mfrow = c(2, 2))
 plot(model3)
 ```
-**look at diagnostics later**
-
+**Diagnostics for model3 look good.**
 
 # Model selection
 
