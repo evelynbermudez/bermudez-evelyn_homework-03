@@ -124,7 +124,7 @@ model.sel(model0,
           model3,
           model4)
 ```
-**From the AC test, we can see that model4, which conforms to linear model assumptions, is the best model that predicts total biomass growth as it has the smallest AIC value and its delta = 0. This means that water treatment and species are the best predictors for total biomass growth from the combinations of predictor variables.**      
+**From the AC test, we can see that model4, which conforms to linear model assumptions, is the best model that predicts total biomass growth as it has the smallest AIC value and its delta = 0. This means that water treatment and species are the best predictors for total biomass growth from the combinations of the predictor variables.**
 
 ## Model summary
 
@@ -158,6 +158,25 @@ Interpreting the model estimates:
 
 ## d. Artist Statement
 This bar plot is meant to highlight the patterns associated with what time I start a run at. In particular, it shows that I go on more runs after 12PM. This aligns with my true preference of running later in the day over the morning. The final draft of the plot will be in watercolor, as it is my second most practiced hobby after running. The significance behind finishing this plot in watercolor is rooted in the associated stress relief I experience when running as I do when painting watercolors. I made my draft on GoodNotes rather than on a paper using water color in order to obtain an idea of the color scheme I would like to use for the three time of day levels more easily by switching highlighter colors. The color of the sky during my runs is what inspired me to color the runs by a bright greyish blue in the morning, a light orange shade for the sun during noon/afternoon, and a purplish blue for the evening sky as the sun is setting. 
+
+# Problem 3
+
+## a. Revisit and summarize
+The authors use a baseline regression model (panel quantile regression) with the independent variables being a financial development index, income to represent economic development, trade openness to measure economic openness, and a human capital index, with a country-fixed constant and a time-fixed constant to predict multidimensional financial development. The goal of conducting this analysis is to understand the influences of climate risk on financial development. The 
+
+![Alt text](stat_critique_table.jpeg)
+
+## b. Visual clarity
+How clearly did the authors visually represent their statistics in figures? For example, are the x- and y-axes in a logical position? Do they show summary statistics (means and SE, for example) and/or model predictions, and if so, do they show the underlying data?
+
+
+
+
+table 2: global sample across 5 quantiles of the outcome variables (in terms of main explanatory variables)
+shows that lack of coping cap to climate risk seems to have sig. neg. effects in low quantiles and insig. effects in high quantiles (.75 and.9): increases in lack of coping cap/ toward climate risk looks to neg. affect financial development esp. in countries with low levels of finacial development 
+
+
+
 
 
 
