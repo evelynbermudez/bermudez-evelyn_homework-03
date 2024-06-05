@@ -120,7 +120,7 @@ table1 <- modelsummary::modelsummary(list("Null" = model0,
 **Table 1: Models predicting plants' total biomass**
 This table shows the coefficients, and their associated standard error, for the variables relevant to each model.
 ```{r echo=FALSE}
-print(table1)
+table1
 ```
 
 
