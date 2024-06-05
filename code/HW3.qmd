@@ -115,8 +115,11 @@ modelsummary::modelsummary(list("Null" = model0,
                                 "Model 1" = model1,
                                 "Model 2" = model2,
                                 "Model 3" = model3,
-                                "Model 4" = model4))
+                                "Model 4" = model4)) # table showing each predictor and their associated coeffficients and s.e.
 ```
+**Table 1: Models predicting plants' total biomass**
+This table shows the coefficients, and their associated standard error, for the variables relevant to each model.
+
 
 ## b. Statistical methods
 ```{r model4-diagnostics}

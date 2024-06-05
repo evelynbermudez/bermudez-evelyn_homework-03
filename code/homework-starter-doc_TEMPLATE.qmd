@@ -245,7 +245,7 @@ Interpret the model estimates for the:
 
 - intercept: **mass of acmispon glaber in drought stressed treatment when SLA = 0 **  
 - SLA slope: **Across drought treatment and species, w each 1 unit inc in SLA (mm^2/g), we expect an inc in total mass of -0.00025 which means that w the esti and standard error there is no effect of SLA on total mass.**  
-- well watered estimate: **across species and SLA, well watered plants tend to be 0.012 %+-% 0.02g heavier than drought **    
+- well watered estimate: **across species and SLA, well watered plants tend to be 0.012 %+-% 0.02g heavier than drought stressed plants **    
 - Lotus scoparius estimate: **insert response here**    
 - Stipa pulchra estimate: **insert response here**    
 
@@ -259,7 +259,7 @@ model_preds <- ggpredict(model1,
                                    "water_treatment", 
                                    "species_name"))
 
-print(model_preds, n = Inf)
+print(model_preds)
  # use model_preds to see the predictions formatted nicely
 ```
 
