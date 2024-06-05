@@ -13,9 +13,6 @@ Link to repo: https://github.com/evelynbermudez/bermudez-evelyn_homework-03.git
 # Problem 1
 
 ## Set up
-
-### reading in packages
-
 ```{r read-pkg}
 # general use
 library(tidyverse)
@@ -43,7 +40,6 @@ drought_exp <- read_xlsx(path = here("data",
 ```
 
 ### cleaning
-
 ```{r clean}
 drought_exp_clean <- drought_exp %>% 
   clean_names() %>% # nicer column names
@@ -65,7 +61,6 @@ drought_exp_clean <- drought_exp %>%
 ```
 
 ## Model construction
-
 The null model is:
 
 0.  **total biomass is not predicted by the water treatment, SLA, and species**
@@ -162,8 +157,6 @@ ggplot(drought_exp_clean,
 
 ### Model summary
 
-
-
 ```{r}
 summary(model4)
 ```
@@ -172,26 +165,22 @@ summary(model4)
 ## d. Visualization caption
 
 ## e. Results
-
+The best combination of predictors of total plant biomass were species and water treatment (F(7, 62) = 27.08, p < 0.001, $/alpha$ = 0.05, R^2 = 0.73). On average, we see that well watered plants tend to be 0.12 %+-% 0.02g heavier than drought stressed plants. On average, Encelia californica, Eschscholzia californica, Grindelia camporum, Nasella pulchra, Penstemon centranthifolius, and Salvia leucophylla plants were 0.22 %+-% 0.03 g, 0.23 %+-% 0.03 g, 0.31 %+-% 0.03 g, 0.23 %+-% 0.03 g, 0.05 %+-% 0.03 g, and 0.12 %+-% 0.03 g, respectively, greater than Acmispon glaber plants
 
 # Problem 2
-
 ## a. 
 **I would like to plot a bar graph with each bar being an individual run, and the y-axis representing the total distance in miles of that run. Each bar will be colored by the time of day the run occurred at with the goal of representing what time of day I prefer to run at given my weekly schedule. The three categories will be Morning (7AM - 11:59AM), Noon/Afternoon (12PM - 4:59PM), and Evening/Night (5PM - 10PM). The final plot will be completed on paper using watercolor paint.**
 
 ## b. Paper Sketch
-
 ![Alt text](aff_sketch.jpeg)
 
 ## c. Visualization Draft
-
 ![Alt text](aff_draft.jpeg)
 
 ## d. Artist Statement
 This bar plot is meant to highlight the patterns associated with what time I start a run at. In particular, it shows that I go on more runs after 12PM. This aligns with my true preference of running later in the day over the morning. The final draft of the plot will be in watercolor, as it is my second most practiced hobby after running. The significance behind finishing this plot in watercolor is rooted in the associated stress relief I experience when running as I do when painting watercolors. I made my draft on GoodNotes to obtain an idea of the color scheme I would like to use for the three time of day levels. The color of the sky during my runs is what inspired me to color the runs by a bright greyish blue in the morning, a light orange shade for the sun during noon/afternoon, and a purplish blue for the evening sky as the sun is setting.
 
 # Problem 3
-
 ## a. Revisit and summarize (https://doi.org/10.1007/s11356-023-26621-1)
 The authors use a baseline regression model (panel quantile regression) with the independent variables being a financial development index, income to represent economic development, trade openness to measure economic openness, and a human capital index, with a country-fixed constant and a time-fixed constant to predict multidimensional financial development. The goal of conducting this analysis is to understand the influences of climate risk on financial development. The
 
