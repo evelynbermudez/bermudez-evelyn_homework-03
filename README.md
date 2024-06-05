@@ -1,5 +1,6 @@
 # ENVS 193DS Workshop 8/Homework 3 repository
 ## Spring 2024
+## Evelyn Bermudez
 
 # General information
 
@@ -18,6 +19,10 @@
 ├── code
 │   ├── homework-starter-doc_KEY.html         # rendered HTML of key code
 │   ├── homework-starter-doc_KEY.qmd          # key code file
+│   ├── aff_sketch.jpeg                       # sketch for personal data affective visualization
+│   ├── aff_draft.jpeg                        # draft for personal data affective visualization
+│   ├── HW3.qmd                               # homework 3 file
+│   ├── stat_critique_table.jpeg              # table from statistical critique
 │   ├── homework-starter-doc_KEY_files        # files associated with rendered HTML
 │   │   ├── figure-html                       # all figure outputs (explore this file!)
 │   │   └── libs                              # accessory files for HTML
