@@ -136,16 +136,9 @@ ggplot(drought_exp_clean,
        aes(x = water_treatment,
            y = total_g, 
            color = species_name)) + # Add underlying data with transparency
-  geom_point(aes(color = species_name), alpha = 0.3) #+ # Add model predictions
-  geom_line(data = model4 aes(y = predicted, group = species_name, color = water_treatment), size = 1) +
-  # Customize the species names and water treatment types
-  scale_x_discrete(labels = water_treatment_labels) +
-  scale_color_manual(values = c("Well-Watered" = "blue", "Drought Stressed" = "red")) +
-  # Facet by species
-  facet_wrap(~ species_name, labeller = as_labeller(species_labels)) +
-  # Remove the legend
-  theme(legend.position = "none") +
-  # Finalize the plot
+  geom_point(aes(color = species_name), alpha = 0.3) +
+  theme(legend.position = "none") + # Remove the legend
+  # finalize the plot w labs and theme
   labs(
     title = "Model Predictions with Underlying Data",
     x = "Water Treatment",
