@@ -259,8 +259,8 @@ model_preds <- ggpredict(model1,
                                    "water_treatment", 
                                    "species_name"))
 
-print(model_preds)
- # use model_preds to see the predictions formatted nicely
+# use View(model_preds) to see the predictions as a data frame
+# use model_preds to see the predictions formatted nicely
 ```
 
 # Visualization

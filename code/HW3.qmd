@@ -128,23 +128,67 @@ par(mfrow = c(2, 2))
 plot(model4)
 ```
 
-**To examine the influence of specific leaf area (SLA), water treatment, and species on total plant biomass, I ran five linear regression models with different combinations of the three predictor variables. In order to compare the five models and select the best one, I used Akaike's Information Criterion (AIC) and found water treatment and species to be the best variables to include in a model to predict plant biomass (model4 had the lowest AIC value and its delta = 0). Finally, the diagnostics for model4 confirm that the model conforms to the assumptions of linear models. The residuals and square root of the standardized residuals are evenly distributed across the model predictions, indicating homoscedastic residuals. We can also see that we have normality from the QQ plot since the relationship between the theoretical values and standardized residuals is roughly linear. Finally, there seems to be no outliers that significantly influence the model as visualized in the fourth plot.**
+To examine the influence of specific leaf area (SLA), water treatment, and species on total plant biomass, I ran five linear regression models with different combinations of the three predictor variables. In order to compare the five models and select the best one, I used Akaike's Information Criterion (AIC) and found water treatment and species to be the best variables to include in a model to predict plant biomass (model4 had the lowest AIC value and its delta = 0). Finally, the diagnostics for model4 confirm that the model conforms to the assumptions of linear models. The residuals and square root of the standardized residuals are evenly distributed across the model predictions, indicating homoscedastic residuals. We can also see that we have normality from the QQ plot since the relationship between the theoretical values and standardized residuals is roughly linear. Finally, there seems to be no outliers that significantly influence the model as visualized in the fourth plot.
 
 ## c. Visualize model predictions with underlying data for "best" model
 ```{r plot-model4}
 ggplot(drought_exp_clean,
        aes(x = water_treatment,
            y = total_g, 
-           color = species_name)) + # Add underlying data with transparency
-  geom_point(aes(color = species_name), alpha = 0.3) +
-  theme(legend.position = "none") + # Remove the legend
+           color = water_treatment)) + # Add underlying data with transparency
+  geom_point(alpha = 0.3) +
+  geom_line(data = model4,
+            aes(x = water_treatment,
+                y = total_g)) +
   # finalize the plot w labs and theme
-  labs(
-    title = "Model Predictions with Underlying Data",
-    x = "Water Treatment",
-    y = "Total Growth (g)"
-  ) +
-  theme_minimal()
+  labs(title = "Model Predictions with Underlying Data",
+       x = "Water Treatment",
+       y = "Total Growth (g)") +
+  theme_classic() +
+  facet_wrap(~species_name)
+
+# using other method to make plot
+model_predictions <- ggpredict(model4, 
+                               terms = c("water_treatment", "species_name"))
+
+model_predictions2 <- ggpredict(model4, 
+                               terms = c("water_treatment", "species_name")) %>% 
+  rename(water_treatment = x,
+         species_name = group) # rename cols 
+
+# View(model_predictions)
+
+
+ggplot() + # second plot for same data 
+  geom_point(data = drought_exp_clean,
+             aes(x = water_treatment,
+                 y = total_g,
+                 color = water_treatment)) + # underlying data
+  geom_ribbon(data = model_predictions2, # add 95% CI ribbon for model predictions
+              aes(x = water_treatment,
+                  y = predicted,
+                  ymin = conf.low,
+                  ymax = conf.high,
+                  fill = water_treatment), alpha = 0.2) +
+  geom_line(data = model_predictions2, # add model prediction lines
+            aes(x = water_treatment,
+                y = predicted,
+                color = water_treatment)) +
+  # finalize the plot w labs and theme
+  labs(title = "Model Predictions with Underlying Data",
+       x = "Water Treatment",
+       y = "Total Growth (g)") +
+  theme_classic() +
+  facet_wrap(~species_name) # create diff. panels by species
+
+# plot fn w/in ggeffects 
+plot(model_predictions, # use model predictions
+     limit_range = TRUE, # limit the range of predictions to the range of predictor values
+     show_data = TRUE) + # show underlying data
+  theme_classic() +  
+  labs(title = "Preliminary model visualization") + 
+  theme(panel.grid = element_blank()) + # remove gridlines
+  facet_wrap(~group) # group by species 
 ```
 
 
@@ -158,7 +202,7 @@ The best combination of predictors of total plant biomass were species and water
 
 # Problem 2
 ## a. 
-**I would like to plot a bar graph with each bar being an individual run, and the y-axis representing the total distance in miles of that run. Each bar will be colored by the time of day the run occurred at with the goal of representing what time of day I prefer to run at given my weekly schedule. The three categories will be Morning (7AM - 11:59AM), Noon/Afternoon (12PM - 4:59PM), and Evening/Night (5PM - 10PM). The final plot will be completed on paper using watercolor paint.**
+I would like to plot a bar graph with each bar being an individual run, and the y-axis representing the total distance in miles of that run. Each bar will be colored by the time of day the run occurred at with the goal of representing what time of day I prefer to run at given my weekly schedule. The three categories will be Morning (7AM - 11:59AM), Noon/Afternoon (12PM - 4:59PM), and Evening/Night (5PM - 10PM). The final plot will be completed on paper using watercolor paint.
 
 ## b. Paper Sketch
 ![Alt text](aff_sketch.jpeg)
