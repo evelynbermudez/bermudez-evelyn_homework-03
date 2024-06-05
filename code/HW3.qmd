@@ -111,7 +111,7 @@ model4 <- lm(total_g ~ water_treatment + species_name,
 
 ## a. Table of models
 ```{r table-models-0-4}
-modelsummary::modelsummary(list("Null" = model0,
+table1 <- modelsummary::modelsummary(list("Null" = model0,
                                 "Model 1" = model1,
                                 "Model 2" = model2,
                                 "Model 3" = model3,
@@ -119,6 +119,9 @@ modelsummary::modelsummary(list("Null" = model0,
 ```
 **Table 1: Models predicting plants' total biomass**
 This table shows the coefficients, and their associated standard error, for the variables relevant to each model.
+```{r echo=FALSE}
+print(table1)
+```
 
 
 ## b. Statistical methods
