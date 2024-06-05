@@ -68,7 +68,7 @@ drought_exp_clean <- drought_exp %>%
 
 The null model is:
 
-0.  **total biomass is not predicted by the water treatment, SLA, and species**\
+0.  **total biomass is not predicted by the water treatment, SLA, and species**
 
 ```{r null-model}
 model0 <- lm(total_g ~ 1, 
@@ -77,7 +77,7 @@ model0 <- lm(total_g ~ 1,
 
 The saturated model is:
 
-1.  **total biomass as a function of SLA, water treatment, and species**\
+1.  **total biomass as a function of SLA, water treatment, and species**
 
 ```{r sat-model}
 model1 <- lm(total_g ~ sla + water_treatment + species_name, 
@@ -86,14 +86,14 @@ model1 <- lm(total_g ~ sla + water_treatment + species_name,
 
 In class we constructed the following models:
 
-2.  **total biomass as a function of SLA and water treatment**\
+2.  **total biomass as a function of SLA and water treatment**
 
 ```{r model2}
 model2 <- lm(total_g ~ sla + water_treatment, 
              data = drought_exp_clean)
 ```
 
-3.  **total biomass as a function of SLA and species**\
+3.  **total biomass as a function of SLA and species**
 
 ```{r model3}
 model3 <- lm(total_g ~ sla + species_name, 
@@ -102,17 +102,30 @@ model3 <- lm(total_g ~ sla + species_name,
 
 For homework, I will construct one more model:
 
-4.  **total biomass as a function of water treatment and species**\
+4.  **total biomass as a function of water treatment and species**
 
 ```{r model4}
 model4 <- lm(total_g ~ water_treatment + species_name, 
              data = drought_exp_clean)
+```
 
+## a. Table of models
+```{r table-models-0-4}
+modelsummary::modelsummary(list("Null" = model0,
+                                "Model 1" = model1,
+                                "Model 2" = model2,
+                                "Model 3" = model3,
+                                "Model 4" = model4))
+```
+
+## b. Statistical methods
+```{r model4-diagnostics}
 par(mfrow = c(2, 2))
 plot(model4)
 ```
 
-**Diagnostics for model4 confirm that the model conforms to the assumptions of linear models. The residuals and square root of the standardized residuals are evenly distributed across the model predictions, indicating homoscedastic residuals. We can also see that we have normality from the QQ plot since the relationship between the theoretical values and standardized residuals is roughly linear. Finally, there seems to be no outliers that significantly influence the model as visualized in the fourth plot.**
+**To examine the influence of specific leaf area (SLA), water treatment, and species on total biomass
+Finally, the diagnostics for model4 confirm that the model conforms to the assumptions of linear models. The residuals and square root of the standardized residuals are evenly distributed across the model predictions, indicating homoscedastic residuals. We can also see that we have normality from the QQ plot since the relationship between the theoretical values and standardized residuals is roughly linear. Finally, there seems to be no outliers that significantly influence the model as visualized in the fourth plot.**
 
 ## Model selection
 

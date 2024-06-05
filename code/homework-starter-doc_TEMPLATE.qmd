@@ -238,14 +238,14 @@ What are the reference levels?
 - reference for `water_treatment`  
 - reference for `species_name`  
 
-**reference for water_treatment:** **water_treatmentDrought stressed**  
-**reference for species_name:** **species_name amison glaber**  
+**reference for water_treatment: Drought stressed**  
+**reference for species_name: Acmispon glaber**  
 
 Interpret the model estimates for the:  
 
 - intercept: **mass of acmispon glaber in drought stressed treatment when SLA = 0 **  
-- SLA slope: **Across drought treatment and species, w each 1 unit inc in SLA (mm^2^drymass of leaf), we expect an inc in total mass of -0.00025 which means that w the esti and standard error there is not effect of SLA on total mass.**  
-- well watered estimate: **across species and SLA, well watered plants tend to be 0.012 +- (figure out how to write the +- in code) 0.02g heavier than drought **    
+- SLA slope: **Across drought treatment and species, w each 1 unit inc in SLA (mm^2/g), we expect an inc in total mass of -0.00025 which means that w the esti and standard error there is no effect of SLA on total mass.**  
+- well watered estimate: **across species and SLA, well watered plants tend to be 0.012 %+-% 0.02g heavier than drought **    
 - Lotus scoparius estimate: **insert response here**    
 - Stipa pulchra estimate: **insert response here**    
 
