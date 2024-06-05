@@ -161,22 +161,16 @@ This bar plot is meant to highlight the patterns associated with what time I sta
 
 # Problem 3
 
-## a. Revisit and summarize
+## a. Revisit and summarize (https://doi.org/10.1007/s11356-023-26621-1)
 The authors use a baseline regression model (panel quantile regression) with the independent variables being a financial development index, income to represent economic development, trade openness to measure economic openness, and a human capital index, with a country-fixed constant and a time-fixed constant to predict multidimensional financial development. The goal of conducting this analysis is to understand the influences of climate risk on financial development. The 
 
 ![Alt text](stat_critique_table.jpeg)
 
 ## b. Visual clarity
-How clearly did the authors visually represent their statistics in figures? For example, are the x- and y-axes in a logical position? Do they show summary statistics (means and SE, for example) and/or model predictions, and if so, do they show the underlying data?
+The authors did a good job representing their model predictions for the models they ran. Table 2 shows the model predictions for the main explanatory variables used by the authors. Some of the main explanatory variables were composed of other dummy variables or multiple financial indexes. All of the variables were defined in another table with their sample size, mean, standard deviation, minimum, and maximum. Focusing back on Table 2, the authors showed the coefficients for the independent variables predicting financial development using a global sample across five quantiles of the outcome variables. They include the standard errors for the coefficients and denote their significance level with asterisks. Taking a look at one of the explanatory variables, the table effectively communicates that lack of coping capacity (LCop) to climate risk seems to have significant negative effects in the low quantiles (0.10, 0.25, and 0.50) and insignificant effects in high quantiles (0.75 and 0.90) on financial development. Thus, increases in lack of coping capacity toward climate risk looks to negatively affect financial development, especially in countries with low levels of financial development. The underlying data is not shown for any of the variables in the research paper. This decision may be due to the large sample size of the variables for each country across time, so including it may have cluttered the paper. 
 
+## c. Aesthetic clarity
+I would say the authors handled visual clutter well but there could have been larger spacing between the rows. The data:ink ratio is good as all the information on the table is necessary to understand the results of the model yet includes short hands to describe the standard errors and significance levels easily. I believe that the authors should have forgone the abbreviated variable names and used the complete variable names for on the table. The abbreviated variable names are described in another table in the paper, so I can see why the authors decided that the variables on Table 2 could be identified using this other table in order to reduce the text on Table 2. 
 
-
-
-table 2: global sample across 5 quantiles of the outcome variables (in terms of main explanatory variables)
-shows that lack of coping cap to climate risk seems to have sig. neg. effects in low quantiles and insig. effects in high quantiles (.75 and.9): increases in lack of coping cap/ toward climate risk looks to neg. affect financial development esp. in countries with low levels of finacial development 
-
-
-
-
-
-
+## d. Recommendations
+The first improvement I would make to this table is to enlarge the title and make it bold. I believe this would help readers quickly skim the paper faster to see if it includes an analysis of something they are interested in. I would also remove the numbers in parenthesis in the same row as "Dep. var: FD" as they do not seem to mean anything from the discussion of the results. If these numbers do have meaning, I would add an explanation for them. I would also add a bit more spacing between the rows grouped by the different independent variables in order to help readers identify what coefficients and standard errors belong to a variable. Lastly, I would change the independent variable names to be either all abbreviations or full names. Even though there is a reference table to the variable names, it bothers me that some of the names are full words, while others are not. 
