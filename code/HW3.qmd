@@ -148,13 +148,6 @@ ggplot(drought_exp_clean,
 ```
 
 
-### Model summary
-
-```{r}
-summary(model4)
-```
-
-
 ## d. Visualization caption
 
 ## e. Results
