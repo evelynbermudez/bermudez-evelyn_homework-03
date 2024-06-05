@@ -111,7 +111,7 @@ model4 <- lm(total_g ~ water_treatment + species_name,
 
 ## a. Table of models
 ```{r table-models-0-4}
-table1 <- modelsummary::modelsummary(list("Null" = model0,
+modelsummary::modelsummary(list("Null" = model0,
                                 "Model 1" = model1,
                                 "Model 2" = model2,
                                 "Model 3" = model3,
@@ -119,24 +119,8 @@ table1 <- modelsummary::modelsummary(list("Null" = model0,
 ```
 **Table 1: Models predicting plants' total biomass**
 This table shows the coefficients, and their associated standard error, for the variables relevant to each model.
-```{r echo=FALSE}
-table1
-```
-
 
 ## b. Statistical methods
-```{r model4-diagnostics}
-par(mfrow = c(2, 2))
-plot(model4)
-```
-
-**To examine the influence of specific leaf area (SLA), water treatment, and species on total biomass
-Finally, the diagnostics for model4 confirm that the model conforms to the assumptions of linear models. The residuals and square root of the standardized residuals are evenly distributed across the model predictions, indicating homoscedastic residuals. We can also see that we have normality from the QQ plot since the relationship between the theoretical values and standardized residuals is roughly linear. Finally, there seems to be no outliers that significantly influence the model as visualized in the fourth plot.**
-
-## Model selection
-
-From the `MuMIn` package
-
 ```{r}
 model.sel(model0,
           model1, 
@@ -144,8 +128,13 @@ model.sel(model0,
           model3,
           model4)
 ```
+```{r model4-diagnostics}
+par(mfrow = c(2, 2))
+plot(model4)
+```
 
-**From the AC test, we can see that model4, which conforms to linear model assumptions, is the best model that predicts total biomass growth as it has the smallest AIC value and its delta = 0. This means that water treatment and species are the best predictors for total biomass growth from the combinations of the predictor variables.**
+**To examine the influence of specific leaf area (SLA), water treatment, and species on total plant biomass, I ran five linear regression models with different combinations of the three predictor variables. In order to compare the five models and select the best one, I used Akaike's Information Criterion (AIC) and found water treatment and species to be the best variables to include in a model to predict plant biomass (model4 had the lowest AIC value and its delta = 0). Finally, the diagnostics for model4 confirm that the model conforms to the assumptions of linear models. The residuals and square root of the standardized residuals are evenly distributed across the model predictions, indicating homoscedastic residuals. We can also see that we have normality from the QQ plot since the relationship between the theoretical values and standardized residuals is roughly linear. Finally, there seems to be no outliers that significantly influence the model as visualized in the fourth plot.**
+
 
 ## Model summary
 
@@ -163,7 +152,6 @@ Interpreting the model estimates:
 -   Lotus scoparius estimate: **insert response here**\
 -   Stipa pulchra estimate: **insert response here**
 
-## Model predictions
 
 # Problem 2
 
